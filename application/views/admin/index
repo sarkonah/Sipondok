@@ -1,0 +1,83 @@
+<div class="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-500">Detail Santri</h1>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-4 col-lg-5">
+            <div class="card shadow mb-4">
+                <div class=" col-sm-10">
+                    <div class="card">
+                        <div class="col-lg-2 col-md-12 footer-info">
+                            <img src="  <?php echo base_url()?>assets/img/3.png" class="img-fluid rounded-start"
+                                alt="...">
+                        </div>
+
+                        <div class="col-xl-8 col-lg-7">
+                            <div class="card shadow mb-4">
+                                <div class="card ">
+                                    <div class="card-header">
+                                        <ul class="nav nav-tabs card-header-tabs">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" aria-current="true" href="#">Profil
+                                                    Santri</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link active" aria-current="true" href="#">Data Orang
+                                                    Tua</a>
+
+                                            </li>
+                                        </ul>
+                                    </div>
+
+
+                                    <div class="card-body">
+                                        <table class="table">
+                                            <tr>
+                                                <th>Nama Santri</th>
+                                                <td> <?php echo $detail_santri->nama_santri ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>NIS Santri</th>
+                                                <td> <?php echo $detail_santri->nis_santri ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Kelas</th>
+                                                <td> <?php echo $detail_santri->id_kelas ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Gender</th>
+                                                <td> <?php echo $detail_santri->gender ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Tempat Lahir</th>
+                                                <td> <?php echo $detail_santri->tempat_lahir ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Tanggal Lahir</th>
+                                                <td> <?php echo $detail_santri->tanggal_lahir ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Alamat_santri</th>
+                                                <td> <?php echo $detail_santri->alamat_santri ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Status Santri</th>
+                                                <td> <?php echo $detail_santri->status_santri ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Tanggal Masuk</th>
+                                                <td> <?php echo $detail_santri->tgl_masuk ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Tanggal_keluar</th>
+                                                <td> <?php echo $detail_santri->tgl_keluar ?></td>
+                                            </tr>
+                                        </table>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
