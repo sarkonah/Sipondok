@@ -13,6 +13,7 @@ class data_walikelas extends CI_Controller{
        $this->load->view('admin/walikelas', $data);
        $this->load->view('templates_admin/footer');
     }
+	
     public function tambah_guru(){
         $nama_lengkap 	= $this->input->post('nama_guru');
 		$domisili	    = $this->input->post('dom_guru');
@@ -29,12 +30,12 @@ class data_walikelas extends CI_Controller{
        // print_r($data);
         //exit;
         $this->db->insert('guru', $data);
-		$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" style="width: 90%;" role="alert"><i class="fas fa-check-circle"></i>
-			  Data berhasil ditambahkan!
-	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		<span aria-hidden="true">&times;</span>
-	  </button>
-	</div>');
+	// 	$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" style="width: 90%;" role="alert"><i class="fas fa-check-circle"></i>
+	// 		  Data berhasil ditambahkan!
+	//   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	// 	<span aria-hidden="true">&times;</span>
+	//   </button>
+	// </div>');
 		redirect('admin/data_walikelas');
         }
         
@@ -54,10 +55,17 @@ class data_walikelas extends CI_Controller{
 		$this->load->model('model_guru');
 		$detail_walikelas = $this->model_guru->detail_walikelas($id);
 		$data['detail_walikelas'] = $detail_walikelas;
-		
-		$this->load->view('templates_admin/header');
-		$this->load->view('templates_admin/sidebar');
-		$this->load->view('admin/detail_walikelas' , $data);
-		$this->load->view('templates_admin/footer');
 	}
+
+	public function hapus_guru($id_guru){
+        $where = array('id_guru' => $id_guru);
+		$this->db->delete('guru', $where);
+		// $this->session->set_flashdata('popup_user','<div class="alert alert-success alert-dismissible fade show" style="width: 100%;" role="alert"><i class="fas fa-trash-alt"></i>
+  		// 		Data berhasil dihapus!
+		//   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		//     <span aria-hidden="true">&times;</span>
+		//   </button>
+		// </div>');
+		redirect('admin/data_walikelas');
+    }
 }

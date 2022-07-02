@@ -132,6 +132,8 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('guru/model_kelas_guru','guru/model_input_rapor','admin/model_detail_indikator','admin/model_kelas', 'admin/model_user', 'admin/model_santri', 'admin/model_guru', 
-'admin/model_pembina', 'pembina/model_kelas', 'admin/model_mapel', 'admin/model_rapor', 'admin/model_saran',
-'model_janji','model_login');
+$autoload['model'] = array('guru/model_kelas_guru','guru/model_input_rapor',
+'admin/model_detail_indikator','admin/model_kelas', 
+'admin/model_user', 'admin/model_santri', 'admin/model_guru', 
+'admin/model_pembina', 'pembina/model_kelas', 'admin/model_mapel', 'admin/model_rapor',
+'admin/model_saran','model_janji','model_login', 'ortu/model_santri_ortu');

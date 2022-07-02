@@ -10,14 +10,14 @@
                                 colspan="1">No
                             </th>
                             <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                colspan="1" aria-label="NIS: activate to sort column descending" aria-sort="ascending"
-                                style="width: 149.467px;">NIS</th>
+                                colspan="1" aria-label="NIS: activate to sort column descending" aria-sort="ascending">
+                                NIS</th>
                             <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
                                 colspan="1" aria-label="Nama Santri: activate to sort column descending"
-                                aria-sort="ascending" style="width: 149.467px;">Nama Santri </th>
+                                aria-sort="ascending">Nama Santri </th>
                             <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
                                 colspan="1" aria-label="Kelas Santri: activate to sort column descending"
-                                aria-sort="ascending" style="width: 149.467px;">Kelas Santri</th>
+                                aria-sort="ascending">Kelas Santri</th>
                             <th class="text-center" colspan="2">Aksi</th>
                         </tr>
                         </tr>
@@ -39,15 +39,14 @@
                                     elseif ($rp->id_kelas =='4')
                                     {echo 'Screening Test';}?>
                         </td>
-                        <td align="center" style="width: 50">
+                        <td align="center">
                             <a href="#" class=" btn btn-primary btn-circle" data-toggle="modal" data-target="#rapor">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-print"></i>
                                 </span>
-
                             </a>
                         </td>
-                        <td align="center" style="width: 50">
+                        <td align="center">
                             <a href="#" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#wa">
                                 <i class="bi bi-send-fill"></i>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

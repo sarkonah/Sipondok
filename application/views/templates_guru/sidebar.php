@@ -27,11 +27,8 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Sub Menu Akademik</h6>
                         <a class="collapse-item" href="<?php echo base_url('guru/data_kelas') ?>">Kelas</a>
                         <!-- view santri kelas. -->
-                        <a class="collapse-item" href="#" data-toggle="modal" data-target="#tambah_saran">Saran
-                            Pengaduan</a>
                     </div>
                 </div>
             </li>
@@ -103,7 +100,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Modal Tambah Saran -->
-                <div class="modal fade" id="tambah_saran" tabindex="-1" aria-labelledby="exampleModalLabel"
+                <!-- <div class="modal fade" id="tambah_saran" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class=" modal-content">
@@ -139,4 +136,4 @@
                         </div class="container-fluid">
                         </form>
                     </div>
-                </div>
+                </div> -->

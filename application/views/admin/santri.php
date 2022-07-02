@@ -8,7 +8,7 @@
         <span class="text">Tambah Santri</span>
     </a>
     <?php echo $this->session->flashdata('message');  ?>
-    <!-- DataTales -->
+    <!-- DataTables -->
     <div class="card shadow mb-4">
 
         <div class="card-body">
@@ -92,7 +92,7 @@
                                                 oninput="setCustomValidity('')">
                                         </div>
                                         <div class="mb-6">
-                                            <label for="Nama" class="form-label">NIS </label>
+                                            <label for="Nama" class="form-label">No Induk Santri </label>
                                             <input type="text" class="form-control" name="nis_santri" required
                                                 oninvalid="this.setCustomValidity('Data wajib diisi!')"
                                                 oninput="setCustomValidity('')">
@@ -222,14 +222,14 @@
                                                 oninput="setCustomValidity('')">
                                         </div>
 
-                                        <div class="col-mb-6">
+                                        <!-- <div class="col-mb-6">
                                             <label for="nis_santri" class="form-label">No Induk Santri</label>
                                             <input type="text" class="form-control" name="nis_santri" required
                                                 oninvalid="this.setCustomValidity('Data Wajib diisi!')"
                                                 oninput="setCustomValidity('')">
-                                        </div>
+                                        </div> -->
 
-                                        <div class="col-mb-6">
+                                        <!-- <div class="col-mb-6">
                                             <label for="kelas_santri" class="form-label">Kelas Santri
                                             </label>
                                             <select class="form-control" aria-label=".form-select-sm example"
@@ -238,7 +238,7 @@
                                                 <option>Person</option>
 
                                             </select>
-                                        </div>
+                                        </div> -->
                                         <br>
                                 </div>
 

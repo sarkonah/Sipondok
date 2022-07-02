@@ -42,14 +42,14 @@ class Login extends CI_Controller{
 					case 'admin':
 						redirect('admin/data_santri');
 						break;
-					case 'guru':
+					case 'walikelas':
 						redirect('guru/data_kelas');
 						break;
                     case 'pembina':
                         redirect('dashboard');
                         break;
                     case 'ortu':
-                        redirect('dashboard');
+                        redirect('ortu/santri');
                         break;
 					default:
 						break;

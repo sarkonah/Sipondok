@@ -22,16 +22,18 @@ class Data_santri extends CI_Controller
 		$status_santri	= $this->input->post('status_santri');
 		$alamat			= $this->input->post('alamat');
 		$nama_ayah		= $this->input->post('nama_ayah');
-		$no_hp_ayah		= $this->input->post('nope_ayah');
+		// $no_hp_ayah		= $this->input->post('nope_ayah');
 		$nama_ibu		= $this->input->post('nama_ayah');
-		$no_hp_ibu		= $this->input->post('nope_ibu');
+		// $no_hp_ibu		= $this->input->post('nope_ibu');
+		$no_hp_ortu	= $this->input->post('nope_ortu');
 		$tanggal_masuk_pondok		= $this->input->post('tgl_masuk');
 
 		$data = array(
 			'nama_ayah'			=> $nama_ayah,
-			'nope_ayah' 		=> $no_hp_ayah,
+			// 'nope_ayah' 		=> $no_hp_ayah,
 			'nama_ibu'			=> $nama_ibu,
-			'nope_ibu' 			=> $no_hp_ibu,
+			// 'nope_ibu' 			=> $no_hp_ibu,
+			'nope_ortu'			=> $no_hp_ortu,
 		);
 		$this->db->insert('ortu', $data);
 		$id_ortu = $this->db->insert_id();

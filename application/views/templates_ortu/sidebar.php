@@ -126,13 +126,6 @@
                                                 aria-label=" With textarea" name="saran"></textarea>
                                         </div>
                                         <br>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="hide_nama"
-                                                checked>
-                                            <label class="form-check-label" for="flexCheckChecked">
-                                                Sembunyikan Nama
-                                            </label>
-                                        </div>
                                         <br>
                             </div>
 

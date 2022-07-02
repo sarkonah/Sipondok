@@ -14,12 +14,14 @@
 
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-striped table-hover">
+                <table class="table table-bordered table-striped table-hover" width="100%" cellspacing="0">
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
                         <th>Status</th>
-                        <th class="text-center">AKSI</th>
+                        <th>Nomor HP</th>
+                        <th>Domisili</th>
+                        <th class="text-center" colspan="2">AKSI</th>
                     </tr>
                     <?php 
       $no=1;
@@ -28,11 +30,23 @@
                         <td><?php echo $no++ ?></td>
                         <td><?php echo $gr->nama_guru ?></td>
                         <td><?php echo $gr->status ?></td>
+                        <td><?php echo $gr->nope_guru ?></td>
+                        <td><?php echo $gr->dom_guru ?></td>
+                        <td align="center">
+                            <a href="#" class=" btn btn-primary btn-circle" data-toggle="modal"
+                                data-target="#edit_walikelas<?= $gr->id_guru?>">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-pen"></i>
+                                </span>
+                            </a>
                         </td>
-
-                        <td>
-                            <?php echo anchor('admin/data_walikelas/detail_walikelas/'.$gr->id_guru,'<div
-                                    class="btn btn-warning btn-sm"><i class="fa fa-search-plus"></i> Detail</div>') ?>
+                        <td align="center">
+                            <a href="#" class=" btn btn-primary btn-circle" data-toggle="modal"
+                                data-target="#hapus_guru<?= $gr->id_guru?>">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-trash"></i>
+                                </span>
+                            </a>
                         </td>
                     </tr>
 
@@ -40,7 +54,7 @@
             </div>
             </table>
 
-            <!-- Modal Tambah Walikelas -->
+            <!-- Modal Tambah Staff Pengajar -->
             <div class="modal fade" id="tambah_walikelas" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg">
@@ -72,9 +86,6 @@
 
                                 </div>
 
-
-
-
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -86,7 +97,7 @@
             </div>
 
             <!-- Modal Detail Walikelas -->
-            <!--  <div class="modal fade" id="detail_walikelas" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <!-- <div class="modal fade" id="detail_walikelas" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class=" modal-content">
@@ -96,45 +107,60 @@
                         <div class="modal-body">
                             <form action="<?php echo base_url() . 'admin/data_walikelas/detail_walikelas'; ?>"
                                 method="post" enctype="multipart/form-data">
-
                                 <div class="row">
+                                    <table class="table">
 
-
-                                </div>
-                                <table class="table">
-
-                                    <tr>
-                                        <th>Nama</th>
-                                        <th>Domisili </th>
-                                        <th>Nomer HP </th>
-                                        <th>Status </th>
-                                    </tr>
-                                    <?php  
+                                        <tr>
+                                            <th>Nama</th>
+                                            <th>Domisili </th>
+                                            <th>Nomer HP </th>
+                                            <th>Status </th>
+                                        </tr>
+                                        <?php  
                                         $no=1;
                                         foreach($guru as $detail_walikelas) : ?>
-                                    <tr>
+                                        <tr>
+                                            <td> <?php echo $detail_walikelas->nama_guru ?></td>
+                                            <td> <?php echo $detail_walikelas->dom_guru ?></td>
+                                            <td> <?php echo $detail_walikelas->nope_guru ?></td>
+                                            <td> <?php echo $detail_walikelas->status ?></td>
+                                        </tr>
+                                        <?php endforeach; ?>
+                                    </table>
+                                </div>
+                        </div>
 
-                                        <td> <?php echo $detail_walikelas->nama_guru ?></td>
-                                        <td> <?php echo $detail_walikelas->dom_guru ?></td>
-                                        <td> <?php echo $detail_walikelas->nope_guru ?></td>
-                                        <td> <?php echo $detail_walikelas->status ?></td>
+                    </div> <br>
+                </div> -->
+
+            <!-- Modal Edit Pengajar -->
 
 
+            <!-- Modal Hapus Pengajar -->
+            <?php foreach($guru as $gr) : ?>
+            <div class=" modal fade" id="hapus_guru<?= $gr->id_guru?>" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Hapus Staff Pengajar
+                            </h5>
+                        </div>
+                        <div class="modal-body">
+                            <p>Apakah Anda yakin akan menghapus data ini?</p>
 
-                                    </tr>
-                                    <?php endforeach; ?>
+                            <div class="modal-footer">
 
-
-                                </table>
+                                <?php echo anchor('admin/data_walikelas/hapus_guru/' .$gr->id_guru, '<div class="btn btn-danger btn">Hapus</div>') ?>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                            </div>
                         </div>
                     </div>
-
-                </div> <br>
+                </div>
             </div>
+            <?php endforeach ?>
 
-        </div class="container-fluid">-->
-            </form>
+
         </div>
     </div>
-</div>
 </div>
