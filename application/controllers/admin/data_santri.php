@@ -5,8 +5,8 @@ class Data_santri extends CI_Controller
 
 	public function index()
 	{
-		$data['santri'] = $this->model_santri->tampil_data()->result();
-		$data['list_kelas']    = $this->model_kelas->list_kelas();
+		$data['santri'] 	= $this->model_santri->tampil_data()->result();
+		// $data['list_kelas'] = $this->model_kelas->list_kelas();
 		$this->load->view('templates_admin/header');
 		$this->load->view('templates_admin/sidebar');
 		$this->load->view('admin/santri', $data);
@@ -15,45 +15,64 @@ class Data_santri extends CI_Controller
 
 	public function tambah_santri()
 	{
+		// $id_santri 	 	= $this->input->post('id_santri');
 		$nama_santri 	= $this->input->post('nama_santri');
+		$nis_santri		= $this->input->post('nis_santri');
+		$id_kelas		= $this->input->post('id_kelas');
 		$tempat_lahir	= $this->input->post('tempat_lahir');
 		$tanggal_lahir	= $this->input->post('tanggal_lahir');
 		$jenis_kelamin	= $this->input->post('gender');
 		$status_santri	= $this->input->post('status_santri');
-		$alamat			= $this->input->post('alamat');
-		$nama_ayah		= $this->input->post('nama_ayah');
+		$alamat_santri	= $this->input->post('alamat_santri');
+		$nama_ortu		= $this->input->post('nama_ortu');
 		// $no_hp_ayah		= $this->input->post('nope_ayah');
-		$nama_ibu		= $this->input->post('nama_ayah');
+		// $nama_ibu		= $this->input->post('nama_ayah');
 		// $no_hp_ibu		= $this->input->post('nope_ibu');
-		$no_hp_ortu	= $this->input->post('nope_ortu');
-		$tanggal_masuk_pondok		= $this->input->post('tgl_masuk');
+		$no_hp_ortu		= $this->input->post('nope_ortu');
+		$alamat_ortu	= $this->input->post('alamat_ortu');
+		// $nama_wali 		= $this->input->post('nama_wali');
+		// $nope_wali 		= $this->input->post('nope_wali');
+		// $alamat_wali 	= $this->input->post('alamat_wali');
+		$tanggal_masuk_pondok	= $this->input->post('tgl_masuk');
+		$tahun_masuk		=$this->input->post('tahun_masuk');
+
+		// $data = array(
+		// 	'nama_ayah'			=> $nama_ayah,
+		// 	// 'nope_ayah' 		=> $no_hp_ayah,
+		// 	'nama_ibu'			=> $nama_ibu,
+		// 	// 'nope_ibu' 			=> $no_hp_ibu,
+		// 	'nope_ortu'			=> $no_hp_ortu,
+		// );
+		// $this->db->insert('ortu', $data);
+		// $id_ortu = $this->db->insert_id();
 
 		$data = array(
-			'nama_ayah'			=> $nama_ayah,
-			// 'nope_ayah' 		=> $no_hp_ayah,
-			'nama_ibu'			=> $nama_ibu,
-			// 'nope_ibu' 			=> $no_hp_ibu,
-			'nope_ortu'			=> $no_hp_ortu,
-		);
-		$this->db->insert('ortu', $data);
-		$id_ortu = $this->db->insert_id();
-
-		$data = array(
-			'id_ortu' 			=> $id_ortu,
+			// 'id_santri' 		=> $id_santri,
 			'nama_santri' 		=> $nama_santri,
+			'nis_santri'		=> $nis_santri,
+			'id_kelas'			=> $id_kelas,
 			'tempat_lahir' 		=> $tempat_lahir,
 			'tanggal_lahir'		=> $tanggal_lahir,
 			'gender'			=> $jenis_kelamin,
 			'status_santri' 	=> $status_santri,
-			'alamat' 			=> $alamat,
-			'tgl_masuk' 		=> $tanggal_masuk_pondok
+			'alamat_santri' 	=> $alamat_santri,
+			'nama_ortu'			=> $nama_ortu,
+			// 'nama_ibu'			=> $nama_ibu,
+			'nope_ortu'			=> $no_hp_ortu,
+			'alamat_ortu'		=> $alamat_ortu,
+			// 'nama_wali'			=> $nama_wali,
+			// 'nope_wali'			=> $nope_wali,
+			// 'alamat_wali'		=> $alamat_wali,
+			'tgl_masuk' 		=> $tanggal_masuk_pondok,
+			'tahun_masuk'		=> $tahun_masuk
 		);
 
 		// echo "<pre>";
 		// print_r($data);
 		// exit;
+
 		$this->db->insert('santri', $data);
-		$this->session->set_flashdata('message', '<div class="alert alert-success alert-dismissible fade show" style="width: 90%;" role="alert"><i class="fas fa-check-circle"></i>
+		$this->session->set_flashdata('santri', '<div class="alert alert-success alert-dismissible fade show" style="width: 100%;" role="alert"><i class="fas fa-check-circle"></i>
 			  Data berhasil ditambahkan!
 	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		<span aria-hidden="true">&times;</span>
@@ -79,25 +98,39 @@ class Data_santri extends CI_Controller
 		$nama_santri 	= $this->input->post('nama_santri');
 		$kelas_santri	= $this->input->post('id_kelas');
 		$status_santri	= $this->input->post('status_santri');
-		$tanggal_masuk  	= $this->input->post('tgl_masuk');
-
+		$tanggal_masuk  = $this->input->post('tgl_masuk');
+		$tanggal_keluar = $this->input->post('tgl_keluar');
+		$nama_ortu		= $this->input->post('nama_ortu');
+		// $nama_ibu		= $this->input->post('nama_ibu');
+		$nope_ortu		= $this->input->post('nope_ortu');
+		$alamat_ortu	= $this->input->post('alamat_ortu');
+		// $nama_wali 		= $this->input->post('nama_wali');
+		// $nope_wali 		= $this->input->post('nope_wali');
+		// $alamat_wali 	= $this->input->post('alamat_wali');
 
 		$data = array(
 			'id_santri' 		=> $id_santri,
 			'nis_santri' 		=> $nis_santri,
 			'nama_santri' 		=> $nama_santri,
-			'id_kelas' 		=> $kelas_santri,
+			'id_kelas' 			=> $kelas_santri,
 			'status_santri' 	=> $status_santri,
-			'tgl_masuk' 		=> $tanggal_masuk
-
+			'tgl_masuk' 		=> $tanggal_masuk,
+			'tgl_keluar'		=> $tanggal_keluar,
+			'nama_ortu'			=> $nama_ortu,
+			// 'nama_ibu'			=> $nama_ibu,
+			'nope_ortu'			=> $nope_ortu,
+			'alamat_ortu'		=> $alamat_ortu,
+			// 'nama_wali'			=> $nama_wali,
+			// 'nope_wali'			=> $nope_wali,
+			// 'alamat_wali'		=> $alamat_wali,
 		);
 
 		$where = array(
 			'id_santri' => $id_santri
 		);
 
-		$this->model_santri->update_santri($where,$data, 'santri');
-		$this->session->set_flashdata('popup_santri', '<div class="alert alert-success alert-dismissible fade show" style="width: 90%;" role="alert"><i class="fas fa-check-circle"></i>
+		$this->model_santri->update_santri($where, $data, 'santri');
+		$this->session->set_flashdata('santri', '<div class="alert alert-success alert-dismissible fade show" style="width: 100%;" role="alert"><i class="fas fa-check-circle"></i>
   				Data berhasil diupdate!
 		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		    <span aria-hidden="true">&times;</span>
@@ -105,16 +138,35 @@ class Data_santri extends CI_Controller
 		</div>');
 		redirect('admin/data_santri');
 	}
-	public function detail_santri($id){
-		$data['santri'] = $this->model_santri->tampil_data()->result();
+
+	public function naik_kelas(){
 		
+	}
+
+	public function hapus_santri($id_santri)
+	{
+		$where = array('id_santri' => $id_santri);
+		$this->db->delete('santri', $where);
+		$this->session->set_flashdata('santri', '<div class="alert alert-success alert-dismissible fade show" style="width: 100%;" role="alert"><i class="fas fa-trash-alt"></i>
+  				Data berhasil dihapus!
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		    <span aria-hidden="true">&times;</span>
+		  </button>
+		</div>');
+		redirect('admin/data_santri');
+	}
+
+	public function detail_santri($id)
+	{
+		$data['santri'] = $this->model_santri->tampil_data()->result();
+
 		$this->load->model('model_santri');
 		$detail_santri = $this->model_santri->detail_santri($id);
 		$data['detail_santri'] = $detail_santri;
-		
+
 		$this->load->view('templates_admin/header');
 		$this->load->view('templates_admin/sidebar');
-		$this->load->view('admin/detail_santri' , $data);
+		$this->load->view('admin/detail_santri', $data);
 		$this->load->view('templates_admin/footer');
 	}
 }

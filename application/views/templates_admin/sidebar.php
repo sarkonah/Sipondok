@@ -11,7 +11,7 @@
                 <div class="sidebar-brand-icon">
 
                 </div>
-                <div class="sidebar-brand-text mx-3">SiPondok</div>
+                <div class="sidebar-brand-text mx-3">Si Pondok</div>
             </a>
 
             <!-- Divider -->
@@ -36,11 +36,11 @@
                         <!-- Data Wali Kelas, nama , nope, alamat, kelas yg jadi wali -->
                         <a class="collapse-item" href="<?= base_url('admin/data_pembina') ?>">Pembina</a>
                         <!-- Nama, nope, dom, jabatan -->
-                        <a class="collapse-item" href="<?= base_url('admin/data_indikator') ?>">Mapel</a>
+                        <a class="collapse-item" href="<?= base_url('admin/data_indikator') ?>">Mata Pelajaran</a>
                         <!-- Bikin KKM nilai sama keterangan) -->
+                        <a class="collapse-item" href="<?= base_url('admin/data_inputnilai') ?>">Input Nilai</a>
                         <a class="collapse-item" href="<?= base_url('admin/data_rapor') ?>">Rapor</a>
                         <!-- Rapor per santri (karena ga ada kenaikan per semester) -->
-                        <a class="collapse-item" href="<?= base_url('admin/data_saran') ?>">Saran Pengaduan</a>
                         <!-- Saran pengaduan -->
                         <a class="collapse-item" href="<?= base_url('admin/data_janji') ?>">Janji Temu</a>
                         <!-- Untuk Buat Jadwal Janji temu, nanti isinya, hari sama nama pembina terus ada wa gateway nya -->

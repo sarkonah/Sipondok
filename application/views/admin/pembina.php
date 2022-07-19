@@ -8,7 +8,7 @@
     </a>
 
 
-    <?php echo $this->session->flashdata('message');  ?>
+    <?php echo $this->session->flashdata('notif_pembina');  ?>
 
     <div class="card shadow mb-4">
 
@@ -148,7 +148,7 @@
                         <h5 class="modal-title" id="exampleModalLabel">Edit Pembina</h5>
                     </div>
                     <div class="modal-body">
-                        <form action="<?php echo base_url('admin/data_pembina/update_pembina'); ?>" method="post"
+                        <form action="<?php echo base_url() . 'admin/data_pembina/update_pembina'; ?>" method="post"
                             enctype="multipart/form-data">
 
                             <div class="mb-6">
@@ -167,6 +167,8 @@
                             </div>
                             <div class="mb-6">
                                 <label for="No HP" class="form-label">No HP</label>
+                                <input type="hidden" name="id_pembina" class="form-control"
+                                    value="<?php echo $pmb->id_pembina ?>">
                                 <input type="text" class="form-control" name="nope_pembina"
                                     value="<?php echo $pmb->nope_pembina ?>" required
                                     oninvalid="this.setCustomValidity('Data wajib diisi!')"

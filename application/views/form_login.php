@@ -1,8 +1,5 @@
 <body class="bg-gradient-primary">
-
-
     <div class="container">
-
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
@@ -20,7 +17,6 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">LOGIN</h1>
                                     </div>
-
                                     <form action="<?php echo base_url('login/login_user') ?>" class="user"
                                         method="post">
                                         <?php echo $this->session->flashdata('pesan_login') ?>

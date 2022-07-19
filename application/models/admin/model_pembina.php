@@ -21,9 +21,9 @@ class Model_pembina extends CI_Model
 		$this->db->update($table,$data);
 	}
 	
-	public function detail_pembina($id = NULL){
-		$query = $this->db->get_where('pembina', array('id_pembina' => $id))->row();
-		return $query;
-	}
+	// public function detail_pembina($id = NULL){
+	// 	$query = $this->db->get_where('pembina', array('id_pembina' => $id))->row();
+	// 	return $query;
+	// }
 }
 ?>

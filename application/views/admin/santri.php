@@ -7,7 +7,9 @@
         </span>
         <span class="text">Tambah Santri</span>
     </a>
-    <?php echo $this->session->flashdata('message');  ?>
+
+
+    <!-- <?php echo $this->session->flashdata('santri');  ?> -->
     <!-- DataTables -->
     <div class="card shadow mb-4">
 
@@ -29,19 +31,16 @@
                                 colspan="1" aria-label="Kelas Santri: activate to sort column descending"
                                 aria-sort="ascending" style="width: 149.467px;">Kelas Santri</th>
                             <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
-                                colspan="1" aria-label="Status Santri: activate to sort column descending"
-                                aria-sort="ascending" style="width: 149.467px;">Status Santri</th>
-                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
                                 colspan="1" aria-label="Tanggal Masuk: activate to sort column descending"
-                                aria-sort="ascending" style="width: 149.467px;">Tanggal Masuk</th>
-                            <th class="text-center" colspan="3">Aksi</th>
+                                aria-sort="ascending" style="width: 149.467px;">Tahun Masuk</th>
+                            <th class="text-center" colspan="4">Aksi</th>
 
                             <?php
                             $no = 1;
                             foreach ($santri as $snt) : ?>
                         <tr>
                             <td><?php echo $no++ ?></td>
-                            <td><?php echo $snt->nis_santri ?></td>
+                            <td><?php echo $snt->nis ?></td>
                             <td><?php echo $snt->nama_santri ?></td>
                             <td>
                                 <?php if ($snt->id_kelas == '1') {
@@ -50,23 +49,29 @@
                                     echo 'Lambatan';
                                 } elseif ($snt->id_kelas == '3') {
                                     echo 'Cepatan';
-                                } elseif ($snt->id_kelas == '4') {
-                                    echo 'Screening Test';
                                 } ?>
                             </td>
-                            <td><?php echo $snt->status_santri ?></td>
-                            <td><?php echo $snt->tgl_masuk ?></td>
+                            <td><?php echo $snt->tahun_masuk ?></td>
                             <td align="center" style="width: 50">
                                 <!-- <a href="<?php echo base_url('admin/data_santri/edit_santri') ?>" -->
                                 <div class="btn btn-sm btn-primary btn" data-toggle="modal"
-                                    data-target="#edit_santri<?= $snt->id_santri?>">
+                                    data-target="#edit_santri<?= $snt->id_santri ?>">
                                     <i class="fa fa-edit"></i>Edit
                             </td>
                             <td>
-                                <?php echo anchor('admin/data_santri/detail_santri/'.$snt->id_santri,'<div
+                                <?php echo anchor('admin/data_santri/detail_santri/' . $snt->id_santri, '<div
                                     class="btn btn-warning btn-sm"><i class="fa fa-search-plus"></i> Detail</div>') ?>
                             </td>
-
+                            <td align="center" style="width: 40">
+                                <div class="btn btn-sm btn-danger btn" data-toggle="modal"
+                                    data-target="#hapus_santri<?= $snt->id_santri ?>"><i class="fa fa-trash"></i> Hapus
+                                </div>
+                            </td>
+                            <td align="center" style="width: 50">
+                                <div class="btn btn-sm btn-primary btn" data-toggle="modal"
+                                    data-target="#edit_kelas<?= $snt->id_santri ?>">
+                                    <i class="fa fa-edit"></i>Edit Kelas
+                            </td>
                         </tr>
 
                         <?php endforeach; ?>
@@ -99,26 +104,24 @@
                                         </div>
 
                                         <div class="mb-6">
-                                            <label for="Nama" class="form-label">Kelas Santri </label>
-
+                                            <label for="kelas" class="form-label">Kelas Santri </label>
                                             <select class="form-control" aria-label=".form-select-sm example"
                                                 name="id_kelas">
                                                 <!-- <option selected>Kelas</option> -->
-                                                <?php foreach($list_kelas as $kls) :?>
-                                                <option>
-                                                    <?php if ($kls->id_kelas == '1')
-                                                    {echo'Pegon Bacaan';}
-                                                elseif ($kls->id_kelas == '2')
-                                                    {echo'Lambatan';} 
-                                                elseif ($kls->id_kelas == '3')
-                                                    {echo'Cepatan';}
-                                                elseif ($kls->id_kelas =='4')
-                                                    {echo 'Screening Test';}?>
+                                                <?php foreach ($list_kelas as $kls) : ?>
+                                                <option value="<?php echo $kls->id_kelas ?>">
+                                                    <?php if ($kls->id_kelas == '1') {
+                                                            echo 'Pegon Bacaan';
+                                                        } elseif ($kls->id_kelas == '2') {
+                                                            echo 'Lambatan';
+                                                        } elseif ($kls->id_kelas == '3') {
+                                                            echo 'Cepatan';
+                                                        } ?>
                                                     <?php endforeach; ?>
                                                 </option>
-
                                             </select>
                                         </div>
+
                                         <div class="col-mb-6">
                                             <label for="Tempatlahir" class="form-label">Tempat Lahir </label>
                                             <input type="text" class="form-control" name="tempat_lahir" required
@@ -155,26 +158,18 @@
                                         </div>
 
                                         <div class="col-mb-6">
-                                            <label for="Alamat" class="form-label">Alamat
+                                            <label for="alamat_santri" class="form-label">Alamat
                                             </label>
-                                            <input type="text" class="form-control" name="alamat" required
+                                            <input type="text" class="form-control" name="alamat_santri" required
                                                 oninvalid="this.setCustomValidity('Data wajib diisi!')"
                                                 oninput="setCustomValidity('')">
                                         </div>
 
 
                                         <div class="col-mb-6">
-                                            <label for="nama_ayah" class="form-label">Nama Ayah
+                                            <label for="nama_ortu" class="form-label">Nama Orang Tua
                                             </label>
-                                            <input type="text" class="form-control" name="nama_ayah" required
-                                                oninvalid="this.setCustomValidity('Data wajib diisi!')"
-                                                oninput="setCustomValidity('')">
-                                        </div>
-
-                                        <div class="col-mb-6">
-                                            <label for="nama_ibu" class="form-label">Nama Ibu
-                                            </label>
-                                            <input type="text" class="form-control" name="nama_ibu" required
+                                            <input type="text" class="form-control" name="nama_ortu" required
                                                 oninvalid="this.setCustomValidity('Data wajib diisi!')"
                                                 oninput="setCustomValidity('')">
                                         </div>
@@ -188,30 +183,14 @@
                                         </div>
 
                                         <div class="col-mb-6">
-                                            <label for="nope_ibu" class="form-label">Alamat Orang Tua
+                                            <label for="alamat_ortu" class="form-label">Alamat Orang Tua
                                             </label>
                                             <input type="text" class="form-control" name="alamat_ortu" required
                                                 oninvalid="this.setCustomValidity('Data wajib diisi!')"
                                                 oninput="setCustomValidity('')">
                                         </div>
 
-                                        <div class="col-mb-6">
-                                            <label for="nama_ibu" class="form-label">Nama Wali
-                                            </label>
-                                            <input type="text" class="form-control" name="nama_wali">
-                                        </div>
 
-                                        <div class="col-mb-6">
-                                            <label for="nope_ibu" class="form-label">No HP Wali
-                                            </label>
-                                            <input type="text" class="form-control" name="nope_wali">
-                                        </div>
-
-                                        <div class="col-mb-6">
-                                            <label for="nope_ibu" class="form-label">Alamat Wali
-                                            </label>
-                                            <input type="text" class="form-control" name="alamat_wali">
-                                        </div>
 
                                         <div class="col-mb-6">
                                             <label for="Tanggalmasuk" class="form-label">Tanggal
@@ -222,23 +201,14 @@
                                                 oninput="setCustomValidity('')">
                                         </div>
 
-                                        <!-- <div class="col-mb-6">
-                                            <label for="nis_santri" class="form-label">No Induk Santri</label>
-                                            <input type="text" class="form-control" name="nis_santri" required
-                                                oninvalid="this.setCustomValidity('Data Wajib diisi!')"
-                                                oninput="setCustomValidity('')">
-                                        </div> -->
-
-                                        <!-- <div class="col-mb-6">
-                                            <label for="kelas_santri" class="form-label">Kelas Santri
+                                        <div class="col-mb-6">
+                                            <label for="Tanggalmasuk" class="form-label">Tahun
+                                                Masuk Pondok
                                             </label>
-                                            <select class="form-control" aria-label=".form-select-sm example"
-                                                name="status_kelas">
-                                                <option>Kiriman</option>
-                                                <option>Person</option>
-
-                                            </select>
-                                        </div> -->
+                                            <input type="text" class="form-control" name="tahun_masuk" required
+                                                oninvalid="this.setCustomValidity('Data wajib diisi!')"
+                                                oninput="setCustomValidity('')">
+                                        </div>
                                         <br>
                                 </div>
 
@@ -250,8 +220,9 @@
                             </form>
                         </div>
                     </div>
+
                     <!-- Modal Edit santri -->
-                    <?php foreach ($santri as $snt):?>
+                    <?php foreach ($santri as $snt) : ?>
                     <div class="modal fade" id="edit_santri<?= $snt->id_santri ?>" tabindex="-1"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
@@ -260,14 +231,16 @@
                                     <h5 class="modal-title" id="exampleModalLabel">Edit Santri</h5>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="<?php echo base_url(). 'admin/data_santri/update_santri'; ?>"
+                                    <form action="<?php echo base_url() . 'admin/data_santri/update_santri'; ?>"
                                         method="post" enctype="multipart/form-data">
 
 
                                         <div class="mb-6">
                                             <label for="nis_santri" class="form-label">NIS </label>
+                                            <input type="hidden" name="id_santri" class="form-control"
+                                                value="<?php echo $snt->id_santri ?>">
                                             <input type="text" class="form-control" name="nis_santri"
-                                                value="<?php echo $snt->nis_santri ?>" required
+                                                value="<?php echo $snt->nis ?>" required
                                                 oninvalid="this.setCustomValidity('Data wajib diisi!')"
                                                 oninput="setCustomValidity('')">
                                         </div>
@@ -285,16 +258,38 @@
                                             </label>
                                             <select class="form-control" aria-label=".form-select-sm example"
                                                 name="id_kelas">
-                                                <!-- <option
-                                        selected>Jenis Kelamin</option> -->
-
-                                                <?php foreach($list_kelas as $kls) : ?>
-                                                <option value="<?php echo $kls->id_kelas?>">
-                                                    <?php echo $kls->id_kelas ?>
+                                                <!-- <option selected>Jenis Kelamin</option> -->
+                                                <?php foreach ($list_kelas as $kls) : ?>
+                                                <option value="<?php echo $kls->id_kelas ?>">
+                                                    <?php if ($kls->id_kelas == '1') {
+                                                            echo 'Pegon Bacaan';
+                                                        } elseif ($kls->id_kelas == '2') {
+                                                            echo 'Lambatan';
+                                                        } elseif ($kls->id_kelas == '3') {
+                                                            echo 'Cepatan';
+                                                        } ?>
+                                                    <?php endforeach; ?>
                                                 </option>
-                                                <?php endforeach; ?>
                                             </select>
                                         </div>
+
+                                        <div class="col-mb-6">
+                                            <label for="Tempatlahir" class="form-label">Tempat Lahir </label>
+                                            <input type="text" class="form-control" name="tempat_lahir"
+                                                value="<?php echo $snt->tempat_lahir ?>" required
+                                                oninvalid="this.setCustomValidity('Data wajib diisi!')"
+                                                oninput="setCustomValidity('')">
+                                        </div>
+
+                                        <div class="col-mb-6">
+                                            <label for="Tanggallahir" class="form-label">Tanggal Lahir
+                                            </label>
+                                            <input type="date" class="form-control" name="tanggal_lahir"
+                                                value="<?php echo $snt->tanggal_lahir ?>" required
+                                                oninvalid="this.setCustomValidity('Data wajib diisi!')"
+                                                oninput="setCustomValidity('')">
+                                        </div>
+
                                         <div class="col-mb-6">
                                             <label for="status_santri" class="form-label">Status Santri
                                             </label>
@@ -315,7 +310,40 @@
                                                 oninvalid="this.setCustomValidity('Data wajib diisi!')"
                                                 oninput="setCustomValidity('')">
                                         </div>
+                                        <div class="col-mb-6">
+                                            <label for="Tanggalkeluar" class="form-label">Tanggal
+                                                Keluar Pondok
+                                            </label>
+                                            <input type="date" class="form-control" name="tgl_keluar"
+                                                value="<?php echo $snt->tgl_keluar ?>">
+                                        </div>
 
+                                        <div class="col-mb-6">
+                                            <label for="nama_ortu" class="form-label">Nama Orang Tua
+                                            </label>
+                                            <input type="text" class="form-control" name="nama_ortu"
+                                                value="<?php echo $snt->nama_ortu ?>" required
+                                                oninvalid="this.setCustomValidity('Data wajib diisi!')"
+                                                oninput="setCustomValidity('')">
+                                        </div>
+
+                                        <div class="col-mb-6">
+                                            <label for="nope_ibu" class="form-label">No HP Orang Tua
+                                            </label>
+                                            <input type="text" class="form-control" name="nope_ortu"
+                                                value="<?php echo $snt->nope_ortu ?>" required
+                                                oninvalid="this.setCustomValidity('Data wajib diisi!')"
+                                                oninput="setCustomValidity('')">
+                                        </div>
+
+                                        <div class="col-mb-6">
+                                            <label for="alamat_ortu" class="form-label">Alamat Orang Tua
+                                            </label>
+                                            <input type="text" class="form-control" name="alamat_ortu"
+                                                value="<?php echo $snt->alamat_ortu ?>" required
+                                                oninvalid="this.setCustomValidity('Data wajib diisi!')"
+                                                oninput="setCustomValidity('')">
+                                        </div>
                                 </div>
 
                                 <div class="modal-footer">
@@ -326,7 +354,31 @@
                             </form>
                         </div>
                     </div>
-                    <?php endforeach?>
+                    <?php endforeach ?>
             </div>
-
         </div>
+
+
+        <!-- Hapus Santri -->
+        <?php foreach ($santri as $snt) : ?>
+        <div class=" modal fade" id="hapus_santri<?= $snt->id_santri ?>" tabindex="-1"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Hapus Santri
+                        </h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Apakah Anda yakin akan menghapus data ini?</p>
+
+                        <div class="modal-footer">
+
+                            <?php echo anchor('admin/data_santri/hapus_santri/' . $snt->id_santri, '<div class="btn btn-danger btn">Hapus</div>') ?>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php endforeach ?>

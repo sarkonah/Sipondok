@@ -2,7 +2,7 @@
 
 class Model_mapel extends CI_Model{
 	public function tampil_data(){
-		return $this->db->get('walikelas');
+		return $this->db->get('mapel');
 	} 
 	public function tambah_walikelas($data,$table){
 		$this->db->insert($table,$data);

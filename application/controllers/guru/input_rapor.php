@@ -10,6 +10,7 @@ class input_rapor extends CI_Controller{
        $this->load->view('guru/input_rapor', $data);
        $this->load->view('templates_guru/footer');
     }
+    
     public function update_input_rapor(){ 
         $id_mapel 	 		= $this->input->post('id_mapel');
         $nilai 	= $this->input->post('nilai');
@@ -19,9 +20,7 @@ class input_rapor extends CI_Controller{
         'nilai' => $nilai
         
         );
-    
         
-    
         $this->model_input_rapor->update_input_rapor($data, 'mapel');
         $this->session->set_flashdata('popup_user','<div class="alert alert-success alert-dismissible fade show" style="width: 100%;" role="alert"><i class="fas fa-check-circle"></i>
               Data berhasil diupdate!
@@ -31,4 +30,26 @@ class input_rapor extends CI_Controller{
         </div>');
         redirect('guru/kelas'); 
       }
+
+
+    public function tambah()
+    {
+        $id_santri          = $this->input->post('id_santri');
+        $data = array();
+        foreach ($_POST['nilai'] as $key => $val) {
+            $data[] = array(                
+                'nilai' => $_POST['nilai'][$key],
+                'id_mapel' => $_POST['id_mapel'][$key],
+                'id_santri'     => $id_santri,
+               
+            );      
+        }       
+        $this->db->insert_batch('rapor',$data);
+
+        $this->session->set_flashdata('message_nominator','<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
+            <script type ="text/JavaScript">  
+            swal("Sukses","Nilai berhasil disimpan","success")  
+            </script>' );
+        redirect('guru/data_kelas');
+    }
 }

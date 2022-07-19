@@ -36,12 +36,10 @@
                             <td><?php echo $usr->password ?></td>
                             <td>
                                 <?php if ($usr->hak_akses == 'admin') {
-                                    echo 'Admin';
-                                } elseif ($usr->hak_akses == 'walikelas') {
-                                    echo 'Walikelas';
-                                } elseif ($usr->hak_akses == 'ortu') {
-                                    echo 'Orang Tua';
-                                } ?>
+                                        echo 'Admin';
+                                    } elseif ($usr->hak_akses == 'walikelas') {
+                                        echo 'Walikelas';
+                                    } ?>
                             </td>
                             <td align="center" style="width: 50">
                                 <!-- <a href="<?php echo base_url('admin/data_user/edit_user') ?>" -->
@@ -102,7 +100,7 @@
                                             <option value="1">Admin</option>
                                             <!-- <option value="2">Pembina</option> -->
                                             <option value="2">Walikelas</option>
-                                            <option value="3">Orang Tua</option>
+                                            <!-- <option value="3">Orang Tua</option> -->
                                         </select>
                                     </div>
                                     <br>
@@ -166,7 +164,7 @@
                                             <option>Admin</option>
                                             <option>Walikelas</option>
                                             <!-- <option>Pembina</option> -->
-                                            <option>Ortu</option>
+                                            <!-- <option>Ortu</option> -->
                                         </select>
                                     </div>
                                     <br>

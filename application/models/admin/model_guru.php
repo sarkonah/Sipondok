@@ -29,5 +29,11 @@ class Model_guru extends CI_Model{
 	public function edit_walikelas($where,$table){
 		return $this->db->get_where($table,$where);
 	}
+	
+	public function update_guru($where,$data,$table)
+	{
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}
 }
 ?>

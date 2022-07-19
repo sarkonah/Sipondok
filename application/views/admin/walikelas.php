@@ -8,7 +8,7 @@
     </a>
 
     <!-- DataTales  -->
-    <?php echo $this->session->flashdata('message');  ?>
+    <?php echo $this->session->flashdata('staff');  ?>
 
     <div class="card shadow mb-4">
 
@@ -34,7 +34,7 @@
                         <td><?php echo $gr->dom_guru ?></td>
                         <td align="center">
                             <a href="#" class=" btn btn-primary btn-circle" data-toggle="modal"
-                                data-target="#edit_walikelas<?= $gr->id_guru?>">
+                                data-target="#edit_guru<?= $gr->id_guru?>">
                                 <span class="icon text-white-50">
                                     <i class="fas fa-pen"></i>
                                 </span>
@@ -134,7 +134,52 @@
                 </div> -->
 
             <!-- Modal Edit Pengajar -->
+            <?php foreach ($guru as $gr) : ?>
+            <div class="modal fade" id="edit_guru<?= $gr->id_guru?>" tabindex="-1" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class=" modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit Staff Pengajar</h5>
+                        </div>
+                        <div class="modal-body">
+                            <form action="<?php echo base_url('admin/data_walikelas/update_guru'); ?>" method="post"
+                                enctype="multipart/form-data">
 
+                                <div class="mb-6">
+                                    <label for="Nama" class="form-label">Nama Lengkap </label>
+                                    <input type="text" class="form-control" name="nama_guru"
+                                        value="<?php echo $gr->nama_guru ?>" required
+                                        oninvalid="this.setCustomValidity('Data wajib diisi!')"
+                                        oninput="setCustomValidity('')">
+                                </div>
+                                <div class="mb-6">
+                                    <label for="Domisili" class="form-label">Domisili</label>
+                                    <input type="text" class="form-control" name="dom_guru"
+                                        value="<?php echo $gr->dom_guru ?>" required
+                                        oninvalid="this.setCustomValidity('Data wajib diisi!')"
+                                        oninput="setCustomValidity('')">
+                                </div>
+                                <div class="mb-6">
+                                    <label for="No HP" class="form-label">No HP</label>
+                                    <input type="hidden" name="id_guru" class="form-control"
+                                        value="<?php echo $gr->id_guru ?>">
+                                    <input type="text" class="form-control" name="nope_guru"
+                                        value="<?php echo $gr->nope_guru ?>" required
+                                        oninvalid="this.setCustomValidity('Data wajib diisi!')"
+                                        oninput="setCustomValidity('')">
+                                </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                        </div>
+                    </div class="container-fluid">
+                    </form>
+                </div>
+            </div>
+            <?php endforeach; ?>
 
             <!-- Modal Hapus Pengajar -->
             <?php foreach($guru as $gr) : ?>

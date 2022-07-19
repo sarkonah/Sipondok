@@ -1,11 +1,11 @@
 <div class="container-fluid">
-    <h1 class="h3 mb-2 text-gray-800">Indikator Rapor</h1>
+    <h1 class="h3 mb-2 text-gray-800">Mata Pelajaran</h1>
     <a href="#" class="btn btn-sm btn-primary btn-icon-split mb-3" data-toggle="modal"
         data-target="#tambah_detail_indikator">
         <span class="icon text-white-50">
             <i class="fas fa-plus"></i>
         </span>
-        <span class="text">Tambah Indikator Nilai Rapor</span>
+        <span class="text">Tambah Mata Pelajaran</span>
     </a>
 
     <div class="card shadow mb-4">
@@ -23,7 +23,7 @@
 	      foreach($kelas as $detail_indikator) : ?>
                     <tr>
                         <td> <?php echo $detail_indikator->nama_mapel ?></td>
-                        <td> <?php echo $detail_indikator->indikator_nilai ?></td>
+                        <td> <?php echo $detail_indikator->nilai_ratarata ?></td>
                         <td align="center" style="width: 50">
                             <!-- <a href="<?php echo base_url('admin/detail_indikator/edit_indikator') ?>" -->
                             <div class="btn btn-sm btn-primary btn" data-toggle="modal"
@@ -48,7 +48,7 @@
                             <h5 class="modal-title" id="exampleModalLabel">Tambah Indikator Nilai</h5>
                         </div>
                         <div class="modal-body">
-                            <form action="<?php echo base_url() . 'admin/detail_indikator/tambah_detail_indikator'; ?>"
+                            <form action="<?php echo base_url() . 'admin/data_indikator/tambah_detail_indikator'; ?>"
                                 method="post" enctype="multipart/form-data">
 
 

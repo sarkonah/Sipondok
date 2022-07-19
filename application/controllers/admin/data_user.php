@@ -60,7 +60,7 @@ class Data_user extends CI_Controller{
     // }
 
     public function update_user(){ 
-      $id_user 	 		= $this->input->post('id_user');
+      $id_user 	 		  = $this->input->post('id_user');
       $nama_lengkap 	= $this->input->post('nama');
       $email 	        = $this->input->post('email');
       $password 	    = md5($this->input->post('password'));
@@ -78,6 +78,10 @@ class Data_user extends CI_Controller{
         'id_user' => $id_user
       );
   
+    // echo "<pre>";
+		// print_r($data);
+		// exit;
+    
       $this->model_user->update_user($where,$data, 'user');
       $this->session->set_flashdata('popup_user','<div class="alert alert-success alert-dismissible fade show" style="width: 100%;" role="alert"><i class="fas fa-check-circle"></i>
             Data berhasil diupdate!
