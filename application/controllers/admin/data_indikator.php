@@ -4,7 +4,7 @@ class Data_indikator extends CI_Controller{
 
     public function index()
     {
-       $data['mapel'] = $this->model_mapel->tampil_data()->result();
+       $data['kelas'] = $this->model_kelas->tampil_data()->result();
        $this->load->view('templates_admin/header');
        $this->load->view('templates_admin/sidebar');
        $this->load->view('admin/indikator_rapor', $data);
@@ -22,15 +22,17 @@ class Data_indikator extends CI_Controller{
 		$this->load->view('admin/detail_indikator', $data);
 		$this->load->view('templates_admin/footer');
 	}
+  
     public function tambah_detail_indikator(){
-        $nama_mapel 	            = $this->input->post('nama_mapel');
-        $indikator_nilai	        = $this->input->post('indikator_nilai');
+      $id_kelas			          = $this->input->post('id_kelas'); 
+      $nama_mapel 	          = $this->input->post('nama_mapel');
+      $nilai_ratarata	        = $this->input->post('nilai_ratarata');
         
 
         $data = array(
-           'nama_mapel' => $nama_mapel,
-           'indikator_nilai'  => $indikator_nilai,
-           
+          'id_kelas'    => $id_kelas,
+          'nama_mapel' => $nama_mapel,
+          'nilai_ratarata'  => $nilai_ratarata,
         );
         
     // echo "<pre>";

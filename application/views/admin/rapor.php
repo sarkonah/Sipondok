@@ -6,12 +6,18 @@
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr>
-                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1">No
+                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                colspan="1">No
                             </th>
-                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="NIS: activate to sort column descending" aria-sort="ascending">
+                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                colspan="1" aria-label="NIS: activate to sort column descending" aria-sort="ascending">
                                 NIS</th>
-                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Nama Santri: activate to sort column descending" aria-sort="ascending">Nama Santri </th>
-                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Kelas Santri: activate to sort column descending" aria-sort="ascending">Kelas Santri</th>
+                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                colspan="1" aria-label="Nama Santri: activate to sort column descending"
+                                aria-sort="ascending">Nama Santri </th>
+                            <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1"
+                                colspan="1" aria-label="Kelas Santri: activate to sort column descending"
+                                aria-sort="ascending">Kelas Santri</th>
                             <th class="text-center" colspan="1">Aksi</th>
                         </tr>
                         </tr>
@@ -19,30 +25,28 @@
                     <?php
                     $no = 1;
                     foreach ($rapor as $rp) : ?>
-                        <tr>
-                            <td><?php echo $no++ ?></td>
-                            <td><?php echo $rp->nis_santri ?></td>
-                            <td><?php echo $rp->nama_santri ?></td>
-                            <td>
-                                <?php if ($rp->id_kelas == '1') {
+                    <tr>
+                        <td><?php echo $no++ ?></td>
+                        <td><?php echo $rp->nis ?></td>
+                        <td><?php echo $rp->nama_santri ?></td>
+                        <td>
+                            <?php if ($rp->id_kelas == '1') {
                                     echo 'Pegon Bacaan';
                                 } elseif ($rp->id_kelas == '2') {
                                     echo 'Lambatan';
                                 } elseif ($rp->id_kelas == '3') {
                                     echo 'Cepatan';
-                                } elseif ($rp->id_kelas == '4') {
-                                    echo 'Screening Test';
                                 } ?>
-                            </td>
-                            <td align="center">
-                                <a href="data_rapor/detail_rapor/<?= $rp->id_santri ?>" class=" btn btn-primary btn-circle">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-print"></i>
-                                    </span>
-                                </a>
-                            </td>
+                        </td>
+                        <td align="center">
+                            <a href="data_rapor/detail_rapor/<?= $rp->id_santri ?>" class=" btn btn-primary btn-circle">
+                                <span class="icon text-white-50">
+                                    <i class="fas fa-print"></i>
+                                </span>
+                            </a>
+                        </td>
 
-                            <!-- <td align="center">
+                        <!-- <td align="center">
                             <a href="#" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#wa">
                                 <i class="bi bi-send-fill"></i>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -63,7 +67,8 @@
 <script src="js/jquery-3.5.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <!-- Modal Print Rapor -->
-<div class="modal fade bd-example-modal-xl" tabindex="-1" id="rapor" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example-modal-xl" tabindex="-1" id="rapor" role="dialog"
+    aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">

@@ -20,7 +20,7 @@
                             foreach($santri as $snt) : ?>
                         <tr>
                             <td><?php echo $no++ ?></td>
-                            <td><?php echo $snt->nis_santri ?></td>
+                            <td><?php echo $snt->nis ?></td>
                             <td><?php echo $snt->nama_santri?></td>
                             <td>
                                 <?php if ($snt->id_kelas == '1')
@@ -29,8 +29,7 @@
                                           {echo'Lambatan';} 
                                       elseif ($snt->id_kelas == '3')
                                           {echo'Cepatan';}
-                                          elseif ($snt->id_kelas =='4')
-                                          {echo 'Screening Test';}?>
+                                          ?>
                             </td>
                             <td align="center" style="width: 50">
                                 <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"

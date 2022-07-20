@@ -17,19 +17,19 @@
 
                     <?php 
       $no=1;
-      foreach($mapel as $mpl) : ?>
+      foreach($kelas as $kls) : ?>
                     <tr>
                         <td><?php echo $no++ ?></td>
-                        <td><?php if ($mpl->id_kelas == '1')
+                        <td><?php if ($kls->id_kelas == '1')
                                     {echo'Bacaan';}
-                                elseif ($mpl->id_kelas == '2')
+                                elseif ($kls->id_kelas == '2')
                                     {echo'Lambatan';} 
-                                elseif ($mpl->id_kelas == '3')
+                                elseif ($kls->id_kelas == '3')
                                     {echo'Cepatan';}
                                    ?>
                         </td>
                         <td>
-                            <?php echo anchor('admin/data_indikator/detail_indikator/'.$mpl->id_kelas,'<div
+                            <?php echo anchor('admin/data_indikator/detail_indikator/'.$kls->id_kelas,'<div
                                     class="btn btn-warning btn-sm"><i class="fa fa-search-plus"></i> Detail</div>') ?>
                         </td>
                     </tr>

@@ -5,43 +5,42 @@ class Data_kelas extends CI_Controller
 
 	public function index()
 	{
-		$data['kelas'] 		= $this->model_kelas->tampil_data()->result();
-
+		$data['join2'] = $this->model_kelas->tampil_kelas();
 		// $data['list_kelas']    	= $this->model_kelas->list_kelas();
 		// $data['list_walikelas']  = $this->model_kelas->list_walikelas();
 		// $data['nama_walikelas']	= $this->model_kelas->nama_walikelas();
 
-		$wali = $this->model_kelas->walikelas();
-		$data['list'] = $wali;
+		// $wali = $this->model_kelas->walikelas();
+		// $data['list'] = $wali;
 		$this->load->view('templates_admin/header');
 		$this->load->view('templates_admin/sidebar');
 		$this->load->view('admin/kelas', $data);
 		$this->load->view('templates_admin/footer');
 	}
 
-	public function tambah_kelas()
-	{
-		$id_kelas		= $this->input->post('id_kelas');
-		$id_user 		= $this->input->post('id_user');
+	// public function tambah_kelas()
+	// {
+	// 	$id_kelas		= $this->input->post('id_kelas');
+	// 	$id_user 		= $this->input->post('id_user');
 
-		$data = array(
-			'id_kelas'  => $id_kelas,
-			'id_user' 	=> $id_user, 
-		);
+	// 	$data = array(
+	// 		'id_kelas'  => $id_kelas,
+	// 		'id_user' 	=> $id_user, 
+	// 	);
 
-		// echo "<pre>";
-		// print_r($data);
-		// exit;
+	// 	// echo "<pre>";
+	// 	// print_r($data);
+	// 	// exit;
 
-		$this->model_kelas->tambah_kelas($data, 'walikelas');
-		$this->session->set_flashdata('message','<div class="alert alert-success alert-dismissible fade show" style="width: 90%;" role="alert"><i class="fas fa-check-circle"></i>
-				Data berhasil ditambahkan!
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		    <span aria-hidden="true">&times;</span>
-		  </button>
-		</div>');
-		redirect('admin/data_kelas');
-	}
+	// 	$this->model_kelas->tambah_kelas($data, 'walikelas');
+	// 	$this->session->set_flashdata('message','<div class="alert alert-success alert-dismissible fade show" style="width: 90%;" role="alert"><i class="fas fa-check-circle"></i>
+	// 			Data berhasil ditambahkan!
+	// 	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	// 	    <span aria-hidden="true">&times;</span>
+	// 	  </button>
+	// 	</div>');
+	// 	redirect('admin/data_kelas');
+	// }
 
 	// public function edit($id)
 	// { 
@@ -54,30 +53,30 @@ class Data_kelas extends CI_Controller
 
 	// }
 
-	public function update_kelas()
-	{
-		$id_kelas			= $this->input->post('id_kelas');
-		$id_user 			= $this->input->post('id_user');
+	// public function update_kelas()
+	// {
+	// 	$id_kelas			= $this->input->post('id_kelas');
+	// 	$id_user 			= $this->input->post('id_user');
 
-		$data = array(
-			'id_kelas' 			=> $id_kelas,
-			'id_user' 			=> $id_user
-		);
+	// 	$data = array(
+	// 		'id_kelas' 			=> $id_kelas,
+	// 		'id_user' 			=> $id_user
+	// 	);
 
-		$where = array(
-			'id_kelas' => $id_kelas
-		);
+	// 	$where = array(
+	// 		'id_kelas' => $id_kelas
+	// 	);
 
-		$where = array('id_kelas' => $id_kelas);
-		$this->model_kelas->update_kelas($where, $data, 'walikelas');
-		$this->session->set_flashdata('pesan_santri', '<div class="alert alert-success alert-dismissible fade show" style="width: 90%;" role="alert"><i class="fas fa-check-circle"></i>
-  				Data berhasil diupdate!
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		    <span aria-hidden="true">&times;</span>
-		  </button>
-		</div>');
-		redirect('admin/data_kelas');
-	}
+	// 	$where = array('id_kelas' => $id_kelas);
+	// 	$this->model_kelas->update_kelas($where, $data, 'walikelas');
+	// 	$this->session->set_flashdata('pesan_santri', '<div class="alert alert-success alert-dismissible fade show" style="width: 90%;" role="alert"><i class="fas fa-check-circle"></i>
+  	// 			Data berhasil diupdate!
+	// 	  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	// 	    <span aria-hidden="true">&times;</span>
+	// 	  </button>
+	// 	</div>');
+	// 	redirect('admin/data_kelas');
+	// }
 
 	// public function hapus_kelas($id_walikelas){
 	// 	$where = array('id_walikelas'=>$id_walikelas);
@@ -91,14 +90,14 @@ class Data_kelas extends CI_Controller
 	// 	redirect('admin/data_kelas');
 	// }
 
-	public function getKelas()
-	{
-		$this->db->select('kelas.*,santri.*');
-		$this->db->from('walikelas');
-		$this->db->join('user', 'user.id_user = walikelas.id_user');
-		$this->db->where('id_kelas');
-		//$result = $this->db->where('id_subevent', $id_subevent);
-		$query = $this->db->get();
-		return $query->result();
-	}
+	// public function getKelas()
+	// {
+	// 	$this->db->select('kelas.*,santri.*');
+	// 	$this->db->from('walikelas');
+	// 	$this->db->join('user', 'user.id_user = walikelas.id_user');
+	// 	$this->db->where('id_kelas');
+	// 	//$result = $this->db->where('id_subevent', $id_subevent);
+	// 	$query = $this->db->get();
+	// 	return $query->result();
+	// }
 }

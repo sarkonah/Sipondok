@@ -51,7 +51,13 @@
                             <form action="<?php echo base_url() . 'admin/data_indikator/tambah_detail_indikator'; ?>"
                                 method="post" enctype="multipart/form-data">
 
-
+                                <div class="mb-6">
+                                    <label for="id_kelas" class="form-label">Nama Kelas</label>
+                                    <input type="text" class="form-control" name="nama_kelas"
+                                        value="<?php echo $kelas->nama_kelas ?>" readonly>
+                                    <input type="text" name="id_kelas" class="form-control"
+                                        value="<?php echo $kelas->id_kelas ?>" hidden>
+                                </div>
                                 <div class="mb-6">
                                     <label for="Nama mapel" class="form-label">Nama Pelajaran</label>
                                     <input type="text" class="form-control" name="nama_mapel" required
@@ -59,8 +65,8 @@
                                         oninput="setCustomValidity('')">
                                 </div>
                                 <div class="mb-6">
-                                    <label for="indikartor nilai" class="form-label">Nilai Minimal</label>
-                                    <input type="text" class="form-control" name="indikator_nilai" required
+                                    <label for="nilai_ratarata" class="form-label">Nilai Rata Rata</label>
+                                    <input type="text" class="form-control" name="nilai_ratarata" required
                                         oninvalid="this.setCustomValidity('Data wajib diisi!')"
                                         oninput="setCustomValidity('')">
                                 </div>
@@ -82,7 +88,7 @@
                 <div class="modal-dialog modal-lg">
                     <div class=" modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit Indikator Nilai
+                            <h5 class="modal-title" id="exampleModalLabel">Edit
                             </h5>
                         </div>
                         <div class="modal-body">

@@ -11,6 +11,7 @@ class Detail_indikator extends CI_Controller
         $this->load->view('admin/detail_indikator', $data);
         $this->load->view('templates_admin/footer');
     }
+	
 	public function detail_indikator($id_kelas)
 	{
 		
@@ -22,23 +23,21 @@ class Detail_indikator extends CI_Controller
 		$this->load->view('admin/detail_indikator', $data);
 		$this->load->view('templates_admin/footer');
 	}
-    public function tambah_detail_indikator(){
 	
-		$mata_pelajaran	= $this->input->post('nama_mapel');
-		$nilai_minimal			= $this->input->post('indikator_nilai');
-		
-		
+    public function tambah_detail_indikator(){
+		$id_kelas			= $this->input->post('id_kelas');
+		$mata_pelajaran		= $this->input->post('nama_mapel');
+		$nilai_ratarata		= $this->input->post('nilai_ratarata');
 
 		$data = array(
-			
+			'id_kelas'			=>$id_kelas, 
             'nama_mapel' 		=> $mata_pelajaran,
-			'indikator_nilai' 		=> $nilai_minimal
-			
+			'nilai_ratarata' 	=> $nilai_ratarata
 		  );
 		 
 		  
         
-    //     echo "<pre>";
+        // echo "<pre>";
 		// print_r($data);
 		// exit;
         
@@ -55,13 +54,13 @@ class Detail_indikator extends CI_Controller
 	public function update_indikator(){ 
 			$id_mapel 	 		= $this->input->post('id_mapel');
 			$nama_pelajaran 	= $this->input->post('nama_mapel');
-			$nilai_minimal 	        = $this->input->post('indikator_nilai');
+			$nilai_ratarata 	        = $this->input->post('nilai_ratarata');
 			
 	  
 			$data = array(
 			'id_mapel' => $id_mapel,
 			'nama_mapel' => $nama_pelajaran,
-			'indikator_nilai'  => $nilai_minimal,
+			'nilai_ratarata'  => $nilai_ratarata,
 			
 		);
 			$where = array(
