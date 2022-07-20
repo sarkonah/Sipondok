@@ -4,7 +4,7 @@ class Model_detail_indikator extends CI_Model{
 	public function tampil_data(){
 		return $this->db->get('mapel');
 	}
-	
+	// sarah
 	// public function walikelas($id_walikelas)
 	// {
 	// 	$result = $this->db->where('id_walikelas', $id_walikelas)->get('indikator_mapel');
